@@ -7,10 +7,11 @@ public class Main {
         boolean found = false;
         int guess;
         int attempts = 0;
-
-        int randomNo =  random.nextInt(1,10);
-
-
+        System.out.print("Enter lower limit for guess: ");
+        int start = scanner.nextInt();
+        System.out.print("Enter higher limit for guess: ");
+        int end = scanner.nextInt();
+        int randomNo =  random.nextInt(start,end);
 
         do{
             System.out.print("Enter guess: ");
