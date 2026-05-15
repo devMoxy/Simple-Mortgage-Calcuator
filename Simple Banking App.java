@@ -1,9 +1,15 @@
+import java.text.NumberFormat;
 import java.util.*;
+import java.text.*;
 
 public class Main {
     static int balance;
     static Scanner scanner =  new Scanner(System.in);
     static int input;
+    static String moneyFormat;
+    static NumberFormat format = NumberFormat.getCurrencyInstance();
+    static int depositInput;
+    static int withdrawalInput;
 
     public static void main(String [] args){
 
@@ -53,18 +59,25 @@ public class Main {
     }
 
     static void balance(){
-        System.out.printf("Your balance is %d\n", balance);
+        moneyFormat = format.format(balance);
+        System.out.printf("Your balance is %s\n", moneyFormat);
     }
 
     static void deposit(){
         System.out.print("Enter the amount for deposit: ");
-        balance = scanner.nextInt() + balance;
+        depositInput = scanner.nextInt();
+        balance = depositInput + balance;
+        moneyFormat = format.format(depositInput);
+        System.out.printf("You have deposited %s", moneyFormat);
         System.out.println("\n");
     }
 
     static void withdraw(){
         System.out.print("Enter the amount to be withdrawn: ");
-        balance = balance - scanner.nextInt();
+        withdrawalInput = scanner.nextInt();
+        balance = balance - withdrawalInput;
+        moneyFormat = format.format(withdrawalInput);
+        System.out.printf("You have withdrawn %s", moneyFormat);
         System.out.println("\n");
     }
 
