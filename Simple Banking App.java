@@ -3,13 +3,13 @@ import java.util.*;
 import java.text.*;
 
 public class Main {
-    static int balance;
+    static double balance;
     static Scanner scanner =  new Scanner(System.in);
     static int input;
     static String moneyFormat;
     static NumberFormat format = NumberFormat.getCurrencyInstance();
-    static int depositInput;
-    static int withdrawalInput;
+    static double depositInput;
+    static double withdrawalInput;
 
     public static void main(String [] args){
 
@@ -65,7 +65,7 @@ public class Main {
 
     static void deposit(){
         System.out.print("Enter the amount for deposit: ");
-        depositInput = scanner.nextInt();
+        depositInput = scanner.nextDouble();
         balance = depositInput + balance;
         moneyFormat = format.format(depositInput);
         System.out.printf("You have deposited %s", moneyFormat);
@@ -74,7 +74,7 @@ public class Main {
 
     static void withdraw(){
         System.out.print("Enter the amount to be withdrawn: ");
-        withdrawalInput = scanner.nextInt();
+        withdrawalInput = scanner.nextDouble();
         balance = balance - withdrawalInput;
         moneyFormat = format.format(withdrawalInput);
         System.out.printf("You have withdrawn %s", moneyFormat);
