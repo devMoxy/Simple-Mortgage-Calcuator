@@ -9,6 +9,7 @@ public class Main {
     static String playerMove;
     static int score = 0;
     static int attempts = 0;
+    static boolean played = false;
 
     public static void main(String[] args) {
         Random random = new Random();
@@ -32,6 +33,7 @@ public class Main {
                 System.out.print("Enter your move (rock, paper, scissors): ");
                 playerMove = scanner.nextLine().trim();
             }
+            played = true;
 
             System.out.printf("\nComputer chooses %s\n", computerMove);
 
@@ -40,7 +42,9 @@ public class Main {
             play();
         }while(playAgain);
 
+        if(played){
             System.out.printf("Your final score is %d out of %d attempt(s)", score, attempts);
+        }
 
     }
     static void gameLogic(){
@@ -74,8 +78,20 @@ public class Main {
 
         if(continueGame.equalsIgnoreCase("yes")){
             playAgain = true;
-        }else{
+        }else if(continueGame.equalsIgnoreCase("no")){
             playAgain = false;
+        }
+        else{
+            while(!(continueGame.equalsIgnoreCase("yes") || continueGame.equalsIgnoreCase("no"))){
+                System.out.println("Invalid Input");
+                System.out.print("Play again (yes/no): ");
+                continueGame = scanner.nextLine().trim();
+                if(continueGame.equalsIgnoreCase("yes")){
+                    playAgain = true;
+                }else if(continueGame.equalsIgnoreCase("no")){
+                    playAgain = false;
+                }
+            }
         }
     }
 }
